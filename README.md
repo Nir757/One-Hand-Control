@@ -2,6 +2,11 @@
 
 This repository is **release-only** and does not include source code.
 
+## Privacy
+
+- One Hand Control does not collect, store, or transmit personal data.
+- Gesture settings and app preferences remain on your device.
+
 ## Download and Install (Release Repo)
 
 1. Open the [Releases](https://github.com/Nir757/One-Hand-Control/releases) page.
@@ -31,6 +36,11 @@ This repository is **release-only** and does not include source code.
 # One Hand Control
 
 One Hand Control is an Android app that uses an `AccessibilityService` overlay to trigger actions from configurable edge gestures. It is designed for one-handed navigation and quick system controls without reaching hardware or nav buttons.
+
+## Privacy
+
+- One Hand Control does not collect, store, or transmit personal data.
+- Gesture settings and app preferences remain on your device.
 
 ## Download and Install (Recommended)
 
