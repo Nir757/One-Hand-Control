@@ -36,7 +36,6 @@ Some optional actions, such as brightness, rotation, and blackout-style controls
 
 ## Contact
 
-For privacy questions or support, use the public issue tracker:
+For privacy questions or support, email:
 
-https://github.com/Nir757/One-Hand-Control/issues
-
+nir757.appsupport@gmail.com
