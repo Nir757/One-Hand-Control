@@ -1,6 +1,8 @@
 # One Hand Control Releases
 
 This repository is **release-only** and does not include source code.
+The app would soon be featured in the play store, you can send me an email to join the testing group. 
+nir757.appsupport@gmail.com
 
 ## Privacy
 
