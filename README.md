@@ -2,13 +2,9 @@
 
 One Hand Control is moving to Google Play.
 
-The app is launching on the Play Store in a few days. GitHub APK releases have been removed while the Play Store listing is prepared.
+Link: https://play.google.com/store/apps/details?id=com.onehandcontrol.app
 
-You are welcome to contact me for a test version before launch:
-
-nir757.appsupport@gmail.com
-
-Once the Play Store listing is live, this page will be updated with the official Play Store link.
+GitHub APK releases have been removed while the Play Store listing is prepared.
 
 ## Privacy
 
