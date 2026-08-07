@@ -8,15 +8,17 @@ On some devices, the Accessibility permission can still appear enabled even thou
 
 This is usually **not caused by your edge settings**. Your configuration may be completely fine while the system has stopped the background service.
 
-## Quick navigation
+---
 
-### General
+# Start here
 
-* [General steps to try first](#general)
-* [Temporary workaround if nothing works](#workaround)
-* [Still having problems?](#still-having-problems)
+For the best chance of fixing the issue, please follow these steps in order:
 
-### Find your phone
+### 1. Enable Auto-start / your manufacturer's background setting
+
+This is the most important step and fixes the issue on many devices.
+
+Choose your phone manufacturer:
 
 * [Xiaomi / Redmi / POCO](#xiaomi)
 * [vivo / iQOO](#vivo)
@@ -31,11 +33,317 @@ This is usually **not caused by your edge settings**. Your configuration may be 
 * [Google Pixel](#pixel)
 * [TECNO / Infinix](#tecno-infinix)
 
+### 2. Also follow the general background settings
+
+After completing the instructions for your manufacturer, also follow:
+
+**[General background settings](#general)**
+
+These include unrestricted battery usage, Battery Saver, locking the app in Recents, and other settings that can affect the Accessibility service.
+
+### 3. Still not working?
+
+If the issue continues after completing both sections, try the:
+
+**[Temporary workaround](#workaround)**
+
+---
+
+# Manufacturer-specific settings
+
+Menu names can vary slightly depending on your phone model and Android/software version.
+
+<a id="xiaomi"></a>
+
+## Xiaomi / Redmi / POCO
+
+Enable **Background autostart**:
+
+**Settings → Apps → Manage apps (if shown) → Background autostart**
+
+Enable **One Hand Control**.
+
+On some versions it may instead be:
+
+**Settings → Apps → Permissions → Background autostart**
+
+Also open:
+
+**Settings → Apps → One Hand Control → Battery**
+
+and choose **No restrictions**.
+
+Video guide for enabling Autostart:
+
+https://www.youtube.com/watch?v=4zC8NitQuN0
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="vivo"></a>
+
+## vivo / iQOO
+
+Search Settings for:
+
+**Autostart**
+
+and enable it for **One Hand Control**.
+
+On many versions it can be found under:
+
+**Settings → Apps → Special app access → Autostart**
+
+Also check One Hand Control's battery/background settings and allow background activity or high background power usage if available.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="realme"></a>
+
+## realme
+
+Open:
+
+**Settings → Battery → App battery management → One Hand Control**
+
+Enable:
+
+* **Allow background activity**
+* **Allow auto launch**
+
+On some versions, Auto-launch may instead be under:
+
+**Phone Manager → Privacy Permissions → Auto-launch apps**
+
+If supported, you can also lock One Hand Control in Recent Apps.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="oppo"></a>
+
+## OPPO
+
+Search Settings for:
+
+**Auto launch**
+
+and enable it for **One Hand Control**.
+
+Then open:
+
+**Settings → Apps → One Hand Control → Battery usage**
+
+and enable **Allow background activity** if available.
+
+The exact location of Auto launch can vary between ColorOS versions.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="oneplus"></a>
+
+## OnePlus
+
+On newer OxygenOS versions, open:
+
+**Settings → Battery → More settings → App battery management → One Hand Control**
+
+Enable **Allow background activity**.
+
+Older OxygenOS versions may also show an **Auto-launch** option. If you have it, enable it for One Hand Control.
+
+If supported, you can also lock One Hand Control in Recent Apps.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="huawei"></a>
+
+## Huawei
+
+Open Settings and search for:
+
+**App launch**
+
+Find **One Hand Control** and turn off **Manage automatically**.
+
+Then enable:
+
+* **Auto-launch**
+* **Secondary launch**
+* **Run in background**
+
+If supported, you can also lock One Hand Control in Recent Apps.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="honor"></a>
+
+## HONOR
+
+Open:
+
+**Settings → Apps → App launch**
+
+Find **One Hand Control** and turn off **Manage automatically**.
+
+Then enable:
+
+* **Auto-launch**
+* **Secondary launch**
+* **Run in background**
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="asus"></a>
+
+## ASUS / ROG Phone / Zenfone
+
+Open:
+
+**Settings → Battery → Auto-start Manager**
+
+Find **One Hand Control** and set it to **Allow**.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="samsung"></a>
+
+## Samsung
+
+Samsung does not use a traditional Auto-start switch.
+
+Open:
+
+**Settings → Battery → Background usage limits → Never sleeping apps**
+
+Tap **+** and add **One Hand Control**.
+
+Also make sure One Hand Control is **not** listed under:
+
+* **Sleeping apps**
+* **Deep sleeping apps**
+
+Depending on your Android / One UI version, also check:
+
+**Settings → Apps → One Hand Control → Battery**
+
+and allow background usage if the option is available.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="motorola"></a>
+
+## Motorola
+
+On newer Motorola devices:
+
+**Settings → Battery → Manage background apps → Background use → Smart use**
+
+Select **One Hand Control** and choose:
+
+**Always allow**
+
+If you don't have this menu, check:
+
+**Settings → Apps → One Hand Control → Battery**
+
+and choose the least restrictive background option available.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="pixel"></a>
+
+## Google Pixel
+
+Open:
+
+**Settings → Apps → One Hand Control → App battery usage**
+
+Enable **Allow background usage**.
+
+If your Android version provides an **Unrestricted** option, select it.
+
+You can also open:
+
+**App info → Unused apps**
+
+and disable **Pause app activity if unused**.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
+---
+
+<a id="tecno-infinix"></a>
+
+## TECNO / Infinix
+
+These settings can vary quite a lot between HiOS/XOS versions.
+
+Search Settings or Phone Master for:
+
+* **Auto-start**
+* **Auto-start Management**
+* **App launch**
+
+and enable One Hand Control.
+
+Also check:
+
+**Settings → Apps → One Hand Control → Battery**
+
+and use **Unrestricted / Allow background activity** if available.
+
+**After this, also follow the [General background settings](#general).**
+
+[↑ Back to top](#top)
+
 ---
 
 <a id="general"></a>
 
-# General steps to try first
+# General background settings
+
+Please try these settings even if you have already enabled Auto-start or your manufacturer's equivalent.
 
 ## 1. Allow unrestricted background/battery usage
 
@@ -70,271 +378,7 @@ If possible, avoid repeatedly opening One Hand Control and then removing it from
 
 On some Android skins, especially Xiaomi / Redmi / POCO, removing an app from Recents can cause the system to treat it as something you intentionally want stopped.
 
-[↑ Back to top](#top)
-
----
-
-# Manufacturer-specific settings
-
-Menu names can vary slightly depending on your phone model and Android/software version.
-
-<a id="xiaomi"></a>
-
-## Xiaomi / Redmi / POCO
-
-Enable **Background autostart**:
-
-**Settings → Apps → Manage apps (if shown) → Background autostart**
-
-Enable **One Hand Control**.
-
-On some versions it may instead be:
-
-**Settings → Apps → Permissions → Background autostart**
-
-Also open:
-
-**Settings → Apps → One Hand Control → Battery**
-
-and choose **No restrictions**.
-
-Video guide for enabling Autostart:
-
-https://www.youtube.com/watch?v=4zC8NitQuN0
-
-[↑ Back to top](#top)
-
----
-
-<a id="vivo"></a>
-
-## vivo / iQOO
-
-Search Settings for:
-
-**Autostart**
-
-and enable it for **One Hand Control**.
-
-On many versions it can be found under:
-
-**Settings → Apps → Special app access → Autostart**
-
-Also check One Hand Control's battery/background settings and allow background activity or high background power usage if available.
-
-[↑ Back to top](#top)
-
----
-
-<a id="realme"></a>
-
-## realme
-
-Open:
-
-**Settings → Battery → App battery management → One Hand Control**
-
-Enable:
-
-* **Allow background activity**
-* **Allow auto launch**
-
-On some versions you can also find Auto-launch under:
-
-**Phone Manager → Privacy Permissions → Auto-launch apps**
-
-If supported, also lock One Hand Control in Recent Apps.
-
-[↑ Back to top](#top)
-
----
-
-<a id="oppo"></a>
-
-## OPPO
-
-Search Settings for:
-
-**Auto launch**
-
-and enable it for **One Hand Control**.
-
-Then open:
-
-**Settings → Apps → One Hand Control → Battery usage**
-
-and enable **Allow background activity** if available.
-
-The exact location of Auto launch varies between ColorOS versions.
-
-[↑ Back to top](#top)
-
----
-
-<a id="oneplus"></a>
-
-## OnePlus
-
-On newer OxygenOS versions, open:
-
-**Settings → Battery → More settings → App battery management → One Hand Control**
-
-Enable **Allow background activity**.
-
-Older OxygenOS versions may also show an **Auto-launch** option. If you have it, enable it for One Hand Control.
-
-If supported, you can also lock One Hand Control in Recent Apps.
-
-[↑ Back to top](#top)
-
----
-
-<a id="huawei"></a>
-
-## Huawei
-
-Open Settings and search for:
-
-**App launch**
-
-Find **One Hand Control** and turn off **Manage automatically**.
-
-Then enable:
-
-* **Auto-launch**
-* **Secondary launch**
-* **Run in background**
-
-If supported, also lock One Hand Control in Recent Apps.
-
-[↑ Back to top](#top)
-
----
-
-<a id="honor"></a>
-
-## HONOR
-
-Open:
-
-**Settings → Apps → App launch**
-
-Find **One Hand Control** and turn off **Manage automatically**.
-
-Then enable:
-
-* **Auto-launch**
-* **Secondary launch**
-* **Run in background**
-
-[↑ Back to top](#top)
-
----
-
-<a id="asus"></a>
-
-## ASUS / ROG Phone / Zenfone
-
-Open:
-
-**Settings → Battery → Auto-start Manager**
-
-Find **One Hand Control** and set it to **Allow**.
-
-[↑ Back to top](#top)
-
----
-
-<a id="samsung"></a>
-
-## Samsung
-
-Samsung does not use a normal Auto-start switch.
-
-Open:
-
-**Settings → Battery → Background usage limits → Never sleeping apps**
-
-Tap **+** and add **One Hand Control**.
-
-Also make sure One Hand Control is **not** listed under:
-
-* **Sleeping apps**
-* **Deep sleeping apps**
-
-Depending on your Android/One UI version, also check:
-
-**Settings → Apps → One Hand Control → Battery**
-
-and allow background usage if the option is available.
-
-[↑ Back to top](#top)
-
----
-
-<a id="motorola"></a>
-
-## Motorola
-
-On newer Motorola devices:
-
-**Settings → Battery → Manage background apps → Background use → Smart use**
-
-Select **One Hand Control** and choose:
-
-**Always allow**
-
-If you don't have this menu, check:
-
-**Settings → Apps → One Hand Control → Battery**
-
-and choose the least restrictive background option available.
-
-[↑ Back to top](#top)
-
----
-
-<a id="pixel"></a>
-
-## Google Pixel
-
-Open:
-
-**Settings → Apps → One Hand Control → App battery usage**
-
-Enable **Allow background usage**.
-
-If your Android version provides an **Unrestricted** option, select it.
-
-You can also open:
-
-**App info → Unused apps**
-
-and disable **Pause app activity if unused**.
-
-[↑ Back to top](#top)
-
----
-
-<a id="tecno-infinix"></a>
-
-## TECNO / Infinix
-
-These settings vary quite a lot between HiOS/XOS versions.
-
-Search Settings or Phone Master for:
-
-* **Auto-start**
-* **Auto-start Management**
-* **App launch**
-
-and enable One Hand Control.
-
-Also check:
-
-**Settings → Apps → One Hand Control → Battery**
-
-and use **Unrestricted / Allow background activity** if available.
+If the issue still happens after completing the manufacturer-specific and general settings, try the **[temporary workaround](#workaround)**.
 
 [↑ Back to top](#top)
 
@@ -369,7 +413,7 @@ Once it starts working, you can use One Hand Control normally without opening th
 
 Android manufacturers frequently change their background-management settings, so the exact menus may be slightly different on your phone.
 
-This website also has manufacturer-specific background-app guides:
+You can also check this website for manufacturer-specific background-app instructions:
 
 https://dontkillmyapp.com/
 
