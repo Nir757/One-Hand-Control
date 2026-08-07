@@ -1,1 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111214">
+  <meta name="description" content="One Hand Control background reliability and Accessibility troubleshooting guide for Android devices.">
+  <title>One Hand Control | Background Reliability Guide</title>
+  <link rel="icon" href="one-hand-control-icon.png">
 
+  <style>
+    :root {
+      --bg: #101113;
+      --surface: #17181b;
+      --surface-hover: #1d1f23;
+      --surface-soft: #141518;
+      --text: #f3f4f6;
+      --muted: #a7abb3;
+      --line: #2a2d32;
+      --accent: #27c7e8;
+      --accent-soft: rgba(39, 199, 232, 0.1);
+      --warning-bg: #1c1912;
+      --warning-line: #5a4927;
+      --warning-text: #e7d09a;
+      --purple-bg: #17131d;
+      --purple-line: #49365d;
+      --radius: 14px;
+      --max: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 78px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #72d8ef;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(16, 17, 19, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      height: 64px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand:hover {
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .header-nav a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 20px 72px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .intro h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .important {
+      margin: 24px 0 36px;
+      padding: 15px 17px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-line);
+      border-radius: 10px;
+      color: var(--warning-text);
+    }
+
+    .important strong {
+      color: #f2dda9;
+    }
+
+    .steps-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+
+    .overview-item {
+      padding: 19px;
+      background: var(--surface);
+    }
+
+    .overview-item + .overview-item {
+      border-left: 1px solid var(--line);
+    }
+
+    .overview-number {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+
+    .overview-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .overview-item span {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    section {
+      margin: 42px 0;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.65rem;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 22px 0 7px;
+      font-size: 1.05rem;
+    }
+
+    .section-note {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .manufacturer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .manufacturer-link {
+      display: flex;
+      align-items: center;
+      min-height: 54px;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      font-weight: 650;
+      font-size: 0.94rem;
+    }
+
+    .manufacturer-link:hover {
+      background: var(--surface-hover);
+      border-color: #3a3e45;
+      text-decoration: none;
+    }
+
+    .secondary-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .secondary-link {
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .secondary-link:hover {
+      color: var(--text);
+      text-decoration: none;
+      background: var(--surface);
+    }
+
+    .manufacturer-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    details.manufacturer {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      overflow: hidden;
+    }
+
+    details.manufacturer[open] {
+      border-color: #3a3e45;
+    }
+
+    details.manufacturer:target {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    details.manufacturer summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 18px;
+      font-weight: 720;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      user-select: none;
+    }
+
+    details.manufacturer summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.manufacturer summary::after {
+      content: "+";
+      color: var(--muted);
+      font-size: 1.3rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    details.manufacturer[open] summary::after {
+      content: "−";
+    }
+
+    .manufacturer-body {
+      border-top: 1px solid var(--line);
+      padding: 2px 18px 18px;
+    }
+
+    .manufacturer-body p {
+      margin: 12px 0;
+    }
+
+    .path {
+      margin: 9px 0;
+      padding: 11px 13px;
+      background: var(--surface-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 7px;
+      color: #e7e9ed;
+      font-weight: 620;
+      overflow-wrap: anywhere;
+    }
+
+    ul.clean {
+      margin: 9px 0 12px;
+      padding-left: 22px;
+    }
+
+    ul.clean li {
+      margin: 5px 0;
+    }
+
+    .next {
+      margin-top: 17px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .content-box {
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .content-box:target {
+      border-color: var(--accent);
+    }
+
+    .content-box ol {
+      padding-left: 22px;
+    }
+
+    .content-box li {
+      margin: 8px 0;
+    }
+
+    .workaround {
+      background: var(--purple-bg);
+      border-color: var(--purple-line);
+    }
+
+    .workaround h2 {
+      color: #f1e9f8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 52px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .header-nav {
+        display: none;
+      }
+
+      main {
+        padding: 30px 16px 58px;
+      }
+
+      .steps-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-item + .overview-item {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .manufacturer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 430px) {
+      .manufacturer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand span {
+        font-size: 0.94rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <img src="one-hand-control-icon.png" alt="One Hand Control icon">
+        <span>One Hand Control</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Quick navigation">
+        <a href="#choose-phone">Choose phone</a>
+        <a href="#general">General settings</a>
+        <a href="#workaround">Workaround</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h1>Background Reliability Guide</h1>
+      <p>
+        If One Hand Control stops working after closing the app, after some time in the background,
+        or after using <strong>Clear all</strong> in Recent Apps, your phone's battery or
+        background-management system may be stopping the Accessibility service.
+      </p>
+    </div>
+
+    <div class="important">
+      <strong>Important:</strong> On some devices, the Accessibility permission can still appear enabled
+      even though the service itself is no longer functioning correctly. This is usually
+      <strong>not caused by your edge settings</strong>.
+    </div>
+
+    <div class="steps-overview">
+      <div class="overview-item">
+        <div class="overview-number">Step 1</div>
+        <strong>Choose your phone</strong>
+        <span>Enable Auto-start, Auto-launch, or your manufacturer's equivalent.</span>
+      </div>
+      <div class="overview-item">
+        <div class="overview-number">Step 2</div>
+        <strong>Do the general settings too</strong>
+        <span>Battery restrictions, Battery Saver, and Recent Apps can still matter.</span>
+      </div>
+      <div class="overview-item">
+        <div class="overview-number">Step 3</div>
+        <strong>Still not working?</strong>
+        <span>Try the temporary Accessibility-service workaround.</span>
+      </div>
+    </div>
+
+    <section id="choose-phone">
+      <h2>Choose your phone manufacturer</h2>
+      <p class="section-note">
+        Start here. The manufacturer-specific setting is the most important part of the guide.
+      </p>
+
+      <div class="manufacturer-grid">
+        <a class="manufacturer-link" href="#xiaomi">Xiaomi / Redmi / POCO</a>
+        <a class="manufacturer-link" href="#vivo">vivo / iQOO</a>
+        <a class="manufacturer-link" href="#realme">realme</a>
+        <a class="manufacturer-link" href="#oppo">OPPO</a>
+        <a class="manufacturer-link" href="#oneplus">OnePlus</a>
+        <a class="manufacturer-link" href="#huawei">Huawei</a>
+        <a class="manufacturer-link" href="#honor">HONOR</a>
+        <a class="manufacturer-link" href="#asus">ASUS / ROG / Zenfone</a>
+        <a class="manufacturer-link" href="#samsung">Samsung</a>
+        <a class="manufacturer-link" href="#motorola">Motorola</a>
+        <a class="manufacturer-link" href="#pixel">Google Pixel</a>
+        <a class="manufacturer-link" href="#tecno-infinix">TECNO / Infinix</a>
+      </div>
+
+      <div class="secondary-links">
+        <a class="secondary-link" href="#general">General background settings</a>
+        <a class="secondary-link" href="#workaround">Temporary workaround</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Manufacturer settings</h2>
+      <p class="section-note">
+        Menu names can vary slightly depending on your phone model and software version.
+        Tap your manufacturer to open the instructions.
+      </p>
+
+      <div class="manufacturer-list">
+
+        <details class="manufacturer" id="xiaomi">
+          <summary>Xiaomi / Redmi / POCO</summary>
+          <div class="manufacturer-body">
+            <h3>Enable Background autostart</h3>
+            <div class="path">Settings → Apps → Manage apps (if shown) → Background autostart</div>
+            <p>Enable <strong>One Hand Control</strong>.</p>
+
+            <p>On some versions, you may instead find it under:</p>
+            <div class="path">Settings → Apps → Permissions → Background autostart</div>
+
+            <h3>Disable battery restrictions</h3>
+            <div class="path">Settings → Apps → One Hand Control → Battery</div>
+            <p>Choose <strong>No restrictions</strong>.</p>
+
+            <p>
+              <a href="https://www.youtube.com/watch?v=4zC8NitQuN0" target="_blank" rel="noopener noreferrer">
+                Watch the Autostart video guide
+              </a>
+            </p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="vivo">
+          <summary>vivo / iQOO</summary>
+          <div class="manufacturer-body">
+            <h3>Enable Autostart</h3>
+            <p>Search your phone's Settings for <strong>Autostart</strong>.</p>
+            <p>On many devices, the path is:</p>
+            <div class="path">Settings → Apps → Special app access → Autostart</div>
+            <p>Enable <strong>One Hand Control</strong>.</p>
+
+            <h3>Allow background usage</h3>
+            <p>
+              Also check One Hand Control's battery/background settings and allow
+              <strong>Background activity</strong> or <strong>High background power usage</strong> if available.
+            </p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="realme">
+          <summary>realme</summary>
+          <div class="manufacturer-body">
+            <div class="path">Settings → Battery → App battery management → One Hand Control</div>
+            <p>Enable:</p>
+            <ul class="clean">
+              <li><strong>Allow background activity</strong></li>
+              <li><strong>Allow auto launch</strong></li>
+            </ul>
+
+            <p>On some versions, Auto-launch may instead be found under:</p>
+            <div class="path">Phone Manager → Privacy Permissions → Auto-launch apps</div>
+
+            <p>If supported, you can also lock One Hand Control in the Recent Apps screen.</p>
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="oppo">
+          <summary>OPPO</summary>
+          <div class="manufacturer-body">
+            <h3>Enable Auto launch</h3>
+            <p>Search Settings for <strong>Auto launch</strong> and enable it for <strong>One Hand Control</strong>.</p>
+            <p class="section-note">The exact location can vary between ColorOS versions.</p>
+
+            <h3>Allow background activity</h3>
+            <div class="path">Settings → Apps → One Hand Control → Battery usage</div>
+            <p>Enable <strong>Allow background activity</strong> if available.</p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="oneplus">
+          <summary>OnePlus</summary>
+          <div class="manufacturer-body">
+            <p>On newer OxygenOS versions, open:</p>
+            <div class="path">Settings → Battery → More settings → App battery management → One Hand Control</div>
+            <p>Enable <strong>Allow background activity</strong>.</p>
+
+            <p>
+              Older OxygenOS versions may also show an <strong>Auto-launch</strong> option.
+              If you see it, enable it for One Hand Control.
+            </p>
+
+            <p>If supported, you can also lock One Hand Control in the Recent Apps screen.</p>
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="huawei">
+          <summary>Huawei</summary>
+          <div class="manufacturer-body">
+            <p>Search Settings for <strong>App launch</strong>.</p>
+            <p>Find <strong>One Hand Control</strong> and turn off <strong>Manage automatically</strong>.</p>
+            <p>Then enable:</p>
+            <ul class="clean">
+              <li><strong>Auto-launch</strong></li>
+              <li><strong>Secondary launch</strong></li>
+              <li><strong>Run in background</strong></li>
+            </ul>
+            <p>If supported, you can also lock One Hand Control in the Recent Apps screen.</p>
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="honor">
+          <summary>HONOR</summary>
+          <div class="manufacturer-body">
+            <div class="path">Settings → Apps → App launch</div>
+            <p>Find <strong>One Hand Control</strong> and turn off <strong>Manage automatically</strong>.</p>
+            <p>Then enable:</p>
+            <ul class="clean">
+              <li><strong>Auto-launch</strong></li>
+              <li><strong>Secondary launch</strong></li>
+              <li><strong>Run in background</strong></li>
+            </ul>
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="asus">
+          <summary>ASUS / ROG Phone / Zenfone</summary>
+          <div class="manufacturer-body">
+            <div class="path">Settings → Battery → Auto-start Manager</div>
+            <p>Find <strong>One Hand Control</strong> and set it to <strong>Allow</strong>.</p>
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="samsung">
+          <summary>Samsung</summary>
+          <div class="manufacturer-body">
+            <p>Samsung does not use a traditional Auto-start switch.</p>
+
+            <div class="path">Settings → Battery → Background usage limits → Never sleeping apps</div>
+            <p>Tap <strong>+</strong> and add <strong>One Hand Control</strong>.</p>
+
+            <p>Also make sure One Hand Control is not listed under:</p>
+            <ul class="clean">
+              <li><strong>Sleeping apps</strong></li>
+              <li><strong>Deep sleeping apps</strong></li>
+            </ul>
+
+            <p>Depending on your Android / One UI version, also check:</p>
+            <div class="path">Settings → Apps → One Hand Control → Battery</div>
+            <p>Allow background usage if available.</p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="motorola">
+          <summary>Motorola</summary>
+          <div class="manufacturer-body">
+            <p>On newer Motorola devices, open:</p>
+            <div class="path">Settings → Battery → Manage background apps → Background use → Smart use</div>
+            <p>Select <strong>One Hand Control</strong> and choose <strong>Always allow</strong>.</p>
+
+            <p>If you don't have this menu, check:</p>
+            <div class="path">Settings → Apps → One Hand Control → Battery</div>
+            <p>Choose the least restrictive background option available.</p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="pixel">
+          <summary>Google Pixel</summary>
+          <div class="manufacturer-body">
+            <div class="path">Settings → Apps → One Hand Control → App battery usage</div>
+            <p>Enable <strong>Allow background usage</strong>.</p>
+
+            <p>If your Android version provides an <strong>Unrestricted</strong> option, select it.</p>
+
+            <p>You can also check:</p>
+            <div class="path">App info → Unused apps</div>
+            <p>Disable <strong>Pause app activity if unused</strong>.</p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+        <details class="manufacturer" id="tecno-infinix">
+          <summary>TECNO / Infinix</summary>
+          <div class="manufacturer-body">
+            <p>Background-management settings can vary significantly between HiOS and XOS versions.</p>
+
+            <p>Search Settings or Phone Master for:</p>
+            <ul class="clean">
+              <li><strong>Auto-start</strong></li>
+              <li><strong>Auto-start Management</strong></li>
+              <li><strong>App launch</strong></li>
+            </ul>
+
+            <p>If one of these options is available, enable it for <strong>One Hand Control</strong>.</p>
+
+            <p>Also check:</p>
+            <div class="path">Settings → Apps → One Hand Control → Battery</div>
+            <p>Select <strong>Unrestricted</strong> or <strong>Allow background activity</strong> if available.</p>
+
+            <div class="next">After this, also complete the <a href="#general">General background settings</a>.</div>
+          </div>
+        </details>
+
+      </div>
+
+      <a class="back-link" href="#top">Back to top</a>
+    </section>
+
+    <section class="content-box" id="general">
+      <h2>General background settings</h2>
+      <p class="section-note">
+        Please try these settings even if you already enabled Auto-start or your manufacturer's equivalent above.
+      </p>
+
+      <h3>1. Allow unrestricted battery/background usage</h3>
+      <div class="path">Settings → Apps → One Hand Control → Battery / App battery usage</div>
+      <p>
+        Choose <strong>Unrestricted</strong>, <strong>No restrictions</strong>,
+        <strong>Allow background activity</strong>, or the closest option your phone provides.
+      </p>
+
+      <h3>2. Temporarily disable Battery Saver</h3>
+      <p>
+        Turn off <strong>Battery Saver / Power Saving mode</strong> and check whether the issue still happens.
+        Some phones become much more aggressive about background apps while Battery Saver is enabled.
+      </p>
+      <p class="section-note">You can turn it back on later after testing.</p>
+
+      <h3>3. Lock One Hand Control in Recent Apps</h3>
+      <p>If your phone supports this option:</p>
+      <ol>
+        <li>Open <strong>One Hand Control</strong>.</li>
+        <li>Open the <strong>Recent Apps</strong> screen.</li>
+        <li>Open the menu for One Hand Control's app card or long-press it.</li>
+        <li>Tap the <strong>Lock</strong> icon.</li>
+      </ol>
+      <p class="section-note">Not every phone supports this feature.</p>
+
+      <h3>4. Avoid repeatedly swiping One Hand Control away</h3>
+      <p>
+        If possible, avoid repeatedly opening One Hand Control and then removing it from Recent Apps.
+      </p>
+      <p>
+        On some Android skins, especially <strong>Xiaomi / Redmi / POCO</strong>,
+        removing an app from Recents can cause the system to treat it as something you intentionally want stopped.
+      </p>
+
+      <p class="next">
+        If the issue still happens, continue to the <a href="#workaround">Temporary workaround</a>.
+      </p>
+
+      <a class="back-link" href="#top">Back to top</a>
+    </section>
+
+    <section class="content-box workaround" id="workaround">
+      <h2>If nothing above works: temporary workaround</h2>
+
+      <p>
+        If One Hand Control still stops working after being closed, this workaround can restore the Accessibility service without reopening the app.
+      </p>
+
+      <p>
+        First, open <strong>One Hand Control</strong> and finish configuring everything the way you want.
+        This workaround works best when you don't expect to need to open the app itself again for a while.
+      </p>
+
+      <p>Then:</p>
+
+      <ol>
+        <li>Leave One Hand Control and remove it from <strong>Recent Apps</strong>.</li>
+        <li>Open <strong>Settings → Accessibility → Downloaded apps → One Hand Control</strong>.</li>
+        <li>Turn the Accessibility service <strong>off</strong>, then <strong>back on</strong>.</li>
+        <li>Check whether the edges are working again.</li>
+      </ol>
+
+      <p>
+        If it doesn't recover on the first try, toggle the Accessibility service off and on again.
+        On some devices it may take <strong>2 to 3 attempts</strong>.
+      </p>
+
+      <p>
+        Once it starts working, you can use One Hand Control normally without opening the main app.
+        It should continue working until the issue is triggered again.
+      </p>
+
+      <a class="back-link" href="#top">Back to top</a>
+    </section>
+
+    <section class="content-box" id="still-having-problems">
+      <h2>Still having problems?</h2>
+
+      <p>
+        Android manufacturers frequently change their background-management settings,
+        so the exact menus may be slightly different on your phone.
+      </p>
+
+      <p>
+        You can also check
+        <a href="https://dontkillmyapp.com/" target="_blank" rel="noopener noreferrer">dontkillmyapp.com</a>
+        for additional manufacturer-specific background-app instructions.
+      </p>
+
+      <p>
+        If you've tried everything above and One Hand Control still stops working,
+        please send me a <strong>bug report from inside the app</strong> and I'll try my best to help 😄
+      </p>
+
+      <a class="back-link" href="#top">Back to top</a>
+    </section>
+
+    <div class="footer">
+      One Hand Control | Background Reliability Guide
+    </div>
+  </main>
+
+  <script>
+    function openHashSection() {
+      if (!window.location.hash) return;
+      const target = document.querySelector(window.location.hash);
+      if (target && target.tagName.toLowerCase() === "details") {
+        target.open = true;
+      }
+    }
+
+    window.addEventListener("hashchange", openHashSection);
+    window.addEventListener("DOMContentLoaded", openHashSection);
+  </script>
+</body>
+</html>
