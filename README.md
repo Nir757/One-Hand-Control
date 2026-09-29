@@ -8,6 +8,9 @@ One Hand Control is available on Google Play.
 
 Direct link: https://play.google.com/store/apps/details?id=com.onehandcontrol.app
 
+Official One Hand Control Website:
+https://onehandcontrol.com/
+
 ## About
 
 One Hand Control is an Android accessibility app for one-handed phone control. It uses configurable edge gestures to trigger navigation, quick system controls, media controls, app launching, macros, and other shortcuts.
