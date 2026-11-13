@@ -61,4 +61,4 @@ Pro entitlement status is cached locally on your device and rechecked through Go
 
 For privacy questions or support, email:
 
-nir757.appsupport@gmail.com
+support@onehandcontrol.com
